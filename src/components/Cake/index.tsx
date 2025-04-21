@@ -9,9 +9,16 @@ export const Cake = ({ candleVisible }: { candleVisible: boolean }) => {
       <div className="drip drip1"></div>
       <div className="drip drip2"></div>
       <div className="drip drip3"></div>
+      <div className="drip drip3"></div>
       <div id="candle" className="candle">
         {candleVisible ? <div className="flame"></div> : null}
       </div>
+      {/* <div id="candle1" className="candle1">
+        {candleVisible ? <div className="flame"></div> : null}
+      </div>
+      <div id="candle2" className="candle2">
+        {candleVisible ? <div className="flame"></div> : null}
+      </div> */}
     </div>
   );
 };

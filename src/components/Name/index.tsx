@@ -1,4 +1,5 @@
-import { SetStateAction, forwardRef, useCallback, useEffect } from "react";
+import { SetStateAction, forwardRef, useCallback, useEffect } from 'react';
+import Input from '../Input/Input';
 
 interface InputProps {
   name: string;
@@ -14,12 +15,12 @@ export const Name: React.FC<React.HTMLProps<HTMLInputElement> & InputProps> =
       { name, setName, shareMode, playing, run, ...rest }: InputProps,
       ref: React.LegacyRef<HTMLInputElement>
     ) => {
-      console.log("🚀 ~ playing:", playing);
-      console.log("🚀 ~ shareMode:", shareMode);
+      console.log('🚀 ~ playing:', playing);
+      console.log('🚀 ~ shareMode:', shareMode);
       const onChange = useCallback(
         (e: { target: { value: SetStateAction<string> } }) => {
           setName(e.target.value);
-          window.history.pushState({}, "", `?name=${e.target.value}`);
+          window.history.pushState({}, '', `?name=${e.target.value}`);
         },
         [setName]
       );
@@ -27,7 +28,7 @@ export const Name: React.FC<React.HTMLProps<HTMLInputElement> & InputProps> =
       useEffect(() => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const nameParam = urlParams.get("name");
+        const nameParam = urlParams.get('name');
         if (nameParam !== null) {
           setName(nameParam);
         }
@@ -36,48 +37,25 @@ export const Name: React.FC<React.HTMLProps<HTMLInputElement> & InputProps> =
       return (
         <div
           style={{
-            position: "absolute",
-            top: "25%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            justifyContent: "center",
-            width: "100dvw",
+            position: 'absolute',
+            top: '25%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: (shareMode || playing) && name.length === 0 ? 'none' : 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100dvw',
             zIndex: 40,
           }}
         >
-          <input
-            id="name"
-            {...{
-              ref,
-              style: {
-                fontFamily: "Montserrat",
-                fontWeight: "bold",
-                fontSize: "2rem",
-                color: "#f0e4d0",
-                opacity: 0.9,
-                border: 0,
-                outline: 0,
-                backgroundColor: "#000000",
-                width: 400,
-                ...(shareMode || playing
-                  ? {
-                      appearance: "none",
-                      backgroundColor: "transparent",
-                      textAlign: "center",
-                      display: name.length > 0 ? "block" : "none",
-                    }
-                  : {}),
-              },
-              value: name,
-              onChange,
-              disabled: shareMode || playing || run,
-              readOnly: shareMode || playing || run,
-              spellCheck: false,
-              autoFocus: true,
-              placeholder: "Enter your name",
-              ...rest,
-            }}
+          <Input
+            value={name}
+            onChange={onChange}
+            disabled={shareMode || playing || run}
+            readOnly={shareMode || playing || run}
+            autoFocus={true}
+            shareMode={shareMode}
+            playing={playing}
           />
         </div>
       );

@@ -22,38 +22,39 @@ const src = new URL("/assets/hbd2.mp3", import.meta.url).href;
 const steps = [
   {
     target: "#name",
-    content: "This is the input to enter the name.",
+    content: "Đây là ô nhập để nhập tên.",
     placement: "bottom",
     disableBeacon: true,
   },
   {
     target: "#candle",
-    content: "Blow on the Lightning port to extinguish the candle.",
+    content: "Thổi vào cổng Lightning để dập tắt ngọn nến.",
     placement: "bottom",
   },
   {
     target: "#start",
-    content: "Press start to play music and light the candle.",
+    content: "Nhấn bắt đầu để phát nhạc và thắp sáng ngọn nến.",
     placement: "top",
   },
   {
     target: "#pause",
-    content: "Press pause if you want the music to pause temporarily.",
+    content: "Nhấn tạm dừng nếu bạn muốn tạm dừng nhạc.",
     placement: "top",
   },
   {
     target: "#stop",
-    content: "Press stop if you want to cancel temporarily.",
+    content: "Nhấn dừng nếu bạn muốn hủy tạm thời.",
     placement: "top",
   },
   {
     target: "#toggle-candle",
-    content: "Press button if you want to light or blow out the candle.",
+    content: "Nhấn nút nếu bạn muốn thắp sáng hoặc dập tắt ngọn nến.",
     placement: "top",
   },
   {
     target: "#share",
-    content: "Change the name and click 'Share' to send the gift to anyone.",
+    content:
+      "Thay đổi tên và nhấp vào 'Chia sẻ' để gửi quà tặng cho bất kỳ ai.",
     placement: "top",
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -83,7 +84,7 @@ function App() {
   const [name, setName] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
 
-  const visibility = shareMode || playing
+  const visibility = shareMode || playing;
 
   const lightCandle = useCallback(() => setCandleVisible(true), []);
 
@@ -170,7 +171,7 @@ function App() {
     [setRun]
   );
 
-  const onEnded = useCallback(() => { }, []);
+  const onEnded = useCallback(() => {}, []);
 
   const onKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {

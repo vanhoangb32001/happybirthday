@@ -7,7 +7,6 @@ interface InputProps {
   disabled?: boolean;
   readOnly?: boolean;
   autoFocus?: boolean;
-  placeholder?: string;
   shareMode?: boolean;
   playing?: boolean;
 }
@@ -18,7 +17,6 @@ const Input: React.FC<InputProps> = ({
   disabled,
   readOnly,
   autoFocus,
-  placeholder,
   shareMode,
   playing,
 }) => {

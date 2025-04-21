@@ -12,7 +12,7 @@ interface InputProps {
 export const Name: React.FC<React.HTMLProps<HTMLInputElement> & InputProps> =
   forwardRef(
     (
-      { name, setName, shareMode, playing, run, ...rest }: InputProps,
+      { name, setName, shareMode, playing, run }: InputProps,
       ref: React.LegacyRef<HTMLInputElement>
     ) => {
       console.log('🚀 ~ playing:', playing);
